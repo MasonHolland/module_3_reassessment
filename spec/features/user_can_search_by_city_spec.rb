@@ -23,7 +23,7 @@ RSpec.feature "user can search by city" do
       expect(current_path).to eq('/search')
 
       restaurants = page.all('.restaurant')
-      # expect(restaurants.count).to eq()
+      expect(restaurants.count).to eq(5)
       expect(restaurants.first).to have_content("Name:"
       expect(restaurants.first).to have_content("Address:"
       expect(restaurants.first).to have_content("Locality:")

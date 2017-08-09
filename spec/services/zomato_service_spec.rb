@@ -11,7 +11,7 @@ describe ZomatoService do
   describe "#cities" do
     it "returns city id when provided with city" do
       VCR.use_cassette("services/find_city_id") do
-        city_id = service.search_by_city
+        city_id = service.search_for_city
 
         expect(city_id).to eq(305)
       end
