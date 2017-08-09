@@ -16,7 +16,7 @@ RSpec.feature "user can search by city" do
 
       visit '/'
 
-      fill_in "Enter a city to begin", with: "Denver"
+      fill_in "Enter a city", with: "Denver"
 
       click_button "Search"
 
@@ -32,7 +32,7 @@ RSpec.feature "user can search by city" do
     it "displays top 5 cuisines" do
       visit '/'
 
-      fill_in "Enter a city to begin", with: "Denver"
+      fill_in "Enter a city", with: "Denver"
 
       click_button "Search"
 
