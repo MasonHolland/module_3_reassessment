@@ -6,7 +6,6 @@ class CityResults
     @zomser = ZomatoService.new(city.downcase)
     @restaurants = restaurants
     @cuisines = cuisines
-
   end
 
   def restaurants

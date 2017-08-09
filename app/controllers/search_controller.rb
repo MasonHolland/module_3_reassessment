@@ -5,7 +5,6 @@ class SearchController < ApplicationController
 
   def index
     @city_results = CityResults.new(search_params)
-    binding.pry
   end
 
   private
