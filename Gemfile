@@ -24,5 +24,7 @@ group :development, :test do
   gem "pry", :require => "pry"
   gem 'rspec-rails', '~> 3.5'
   gem 'capybara'
+  gem 'vcr'
+  gem 'webmock'
 
 end
