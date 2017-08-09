@@ -10,9 +10,30 @@ require 'rails_helper'
 # *BOSS MODE* when I click page 2,
 # I should see the remaining 5 restaurants.
 
-RSpec.feature "" do
-  describe "" do
-    it "" do
+RSpec.feature "user can search by city" do
+  describe "returns top 5 cuisines and restaurants" do
+    it "displays restaurants name, address, locality" do
+
+      visit '/'
+
+      fill_in "Enter a city to begin", with: "Denver"
+
+      click_button "Search"
+
+      expect(current_path).to eq('/search')
+
+      restaurants = page.all('.restaurant')
+      # expect(restaurants.count).to eq()
+      expect(restaurants.first).to have_content("Name:"
+      expect(restaurants.first).to have_content("Address:"
+      expect(restaurants.first).to have_content("Locality:")
+    end
+
+    it "displays top 5 cuisines" do
+
+    end
+
+    it "can view next page of results" do
 
     end
   end
