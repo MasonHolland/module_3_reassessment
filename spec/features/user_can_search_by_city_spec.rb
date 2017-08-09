@@ -24,8 +24,8 @@ RSpec.feature "user can search by city" do
 
       restaurants = page.all('.restaurant')
       expect(restaurants.count).to eq(5)
-      expect(restaurants.first).to have_content("Name: Park Burger"
-      expect(restaurants.first).to have_content("Address: 1890 South Pearl Street 80210"
+      expect(restaurants.first).to have_content("Name: Park Burger")
+      expect(restaurants.first).to have_content("Address: 1890 South Pearl Street 80210")
       expect(restaurants.first).to have_content("Locality: South Pearl-Platt Park")
     end
 
@@ -44,7 +44,7 @@ RSpec.feature "user can search by city" do
       expect(cuisines.last).to have_content("Name: Armenian")
     end
 
-    it "can view next page of results" do
+    xit "can view next page of results" do
 
     end
   end
