@@ -18,16 +18,13 @@ class ZomatoService
     attr_reader :city, :conn
 
     def city_lookup
-      binding.pry
       response = conn.get do |req|
         req.url '/api/v2.1/cities'
         req.headers["user-key"] = ENV["zomato-api-key"]
         req.params = { "q": "#{city}" }
-        binding.pry
       end
-      binding.pry
       parsed = parse_it(response)
-      parsed.first["id"]
+      parsed["location_suggestions"].first["id"]
     end
 
     def cuisines_search(city_id)
