@@ -1,1 +1,25 @@
+<h1>Top 5 Restaurants in <%= @city_results.city %></h1>
 
+<div class="restaurants">
+  <%= @city_results.restaurants.each do |restaurant| %>
+  <ul>
+    <li class="restaurant">
+      <strong>Name: <%= restaurant.name %></strong><br>
+      <p>Address: <%= restaurant.address %></p><br>
+      <p>Locality: <%= restaurant.locality %></p>
+    </li>
+  </ul>
+  <% end %>
+</div>
+
+<h2>Top 5 Cuisines in <%= @city_results.city %></h2>
+
+<div class="cuisines">
+  <%= @city_results.cuisines.each do |cuisine| %>
+  <ul>
+    <li class="cuisine">
+      <strong>Name: <%= cuisine.name %></strong>
+    </li>
+  </ul>
+  <% end %>
+</div>

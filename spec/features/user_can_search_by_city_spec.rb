@@ -13,35 +13,39 @@ require 'rails_helper'
 RSpec.feature "user can search by city" do
   describe "returns top 5 cuisines and restaurants" do
     it "displays restaurants name, address, locality" do
+      VCR.use_cassette("services/find_all") do
+        visit '/'
 
-      visit '/'
+        fill_in "Enter a city", with: "Denver"
 
-      fill_in "Enter a city", with: "Denver"
+        click_button "Search"
 
-      click_button "Search"
+        expect(current_path).to eq('/search')
 
-      expect(current_path).to eq('/search')
-
-      restaurants = page.all('.restaurant')
-      expect(restaurants.count).to eq(5)
-      expect(restaurants.first).to have_content("Name: Park Burger")
-      expect(restaurants.first).to have_content("Address: 1890 South Pearl Street 80210")
-      expect(restaurants.first).to have_content("Locality: South Pearl-Platt Park")
+        restaurants = page.all('.restaurant')
+        expect(restaurants.count).to eq(5)
+        expect(restaurants.first).to have_content("Name: Park Burger")
+        expect(restaurants.first).to have_content("Address: 1890 South Pearl Street 80210")
+        expect(restaurants.first).to have_content("Locality: South Pearl-Platt Park")
+      end
     end
 
     it "displays top 5 cuisines" do
-      visit '/'
+      VCR.use_cassette("services/find_all") do
 
-      fill_in "Enter a city", with: "Denver"
+        visit '/'
 
-      click_button "Search"
+        fill_in "Enter a city", with: "Denver"
 
-      expect(current_path).to eq('/search')
+        click_button "Search"
 
-      cuisines = page.all('.cuisine')
-      expect(cuisines.count).to eq(5)
-      expect(cuisines.first).to have_content("Name: Afghani")
-      expect(cuisines.last).to have_content("Name: Armenian")
+        expect(current_path).to eq('/search')
+
+        cuisines = page.all('.cuisine')
+        expect(cuisines.count).to eq(5)
+        expect(cuisines.first).to have_content("Name: Afghani")
+        expect(cuisines.last).to have_content("Name: Armenian")
+      end
     end
 
     xit "can view next page of results" do

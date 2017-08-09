@@ -1,6 +1,6 @@
 class ZomatoService
-  def initialize(params)
-    @city = params["city"]
+  def initialize(city)
+    @city = city
     @city_id = nil
     @conn = Faraday.new(:url => 'https://developers.zomato.com')
   end

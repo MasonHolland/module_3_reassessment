@@ -4,7 +4,7 @@ describe ZomatoService do
   attr_reader :service
 
   before(:each) do
-    params = { "city" => "denver" }
+    params = "denver"
     @service = ZomatoService.new(params)
   end
 
@@ -22,7 +22,7 @@ describe ZomatoService do
     it "returns top 5 cuisines when provided with city_id" do
       VCR.use_cassette("services/cuisines_search") do
         service.search_for_city
-        
+
         cuisines = service.search_for_cuisines
         cuisine = cuisines.first["cuisine"]
 
