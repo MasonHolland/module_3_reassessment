@@ -6,12 +6,7 @@ class CityResults
     @zomser = ZomatoService.new(city.downcase)
     @restaurants = restaurants
     @cuisines = cuisines
-  end
 
-  def retrieve_all
-    zomser.search_for_city
-    restaurants
-    cuisines
   end
 
   def restaurants

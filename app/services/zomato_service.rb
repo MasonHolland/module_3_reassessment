@@ -1,13 +1,13 @@
 class ZomatoService
   def initialize(param)
     @city = param
-    @city_id = nil
     @conn = Faraday.new(:url => 'https://developers.zomato.com')
+    @city_id = search_for_city
   end
 
   def search_for_city
     parsed = parse_it(city_lookup)
-    @city_id = parsed["location_suggestions"].first["id"]
+    parsed["location_suggestions"].first["id"]
   end
 
   def search_for_cuisines
