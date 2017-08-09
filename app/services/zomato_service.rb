@@ -11,11 +11,11 @@ class ZomatoService
   end
 
   def search_for_cuisines
-    parsed = parse_it(cuisines_search)["cuisines"][0..4]
+    parse_it(cuisines_search)["cuisines"][0..4]
   end
 
   def search_for_restaurants
-    parsed = parse_it(restaurants_search)["restaurants"]
+    parse_it(restaurants_search)["restaurants"]
   end
 
   private
