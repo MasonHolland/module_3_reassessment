@@ -36,10 +36,11 @@ describe ZomatoService do
   describe "#restaurants" do
     it "returns top 5 restaurants when provided with city_id" do
       VCR.use_cassette("services/restaurants_search") do
+
         restaurants = service.search_for_restaurants
         restaurant = restaurants.first["restaurant"]
 
-        expect(restaurants.count).to eq(25)
+        expect(restaurants.count).to eq(20)
         expect(restaurant["id"]).to eq("16973776")
         expect(restaurant["name"]).to eq("Park Burger")
         expect(restaurant["location"]["address"]).to eq("1890 South Pearl Street 80210")

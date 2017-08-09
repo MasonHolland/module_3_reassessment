@@ -16,6 +16,8 @@ class ZomatoService
   end
 
   def search_for_restaurants
+    search_by_city
+    parsed = parse_it(restaurants_search)["restaurants"]
   end
 
   private
@@ -37,7 +39,17 @@ class ZomatoService
       end
     end
 
-    def restaurants_search(city_id)
+    def restaurants_search
+      conn.get do |req|
+        req.url '/api/v2.1/search'
+        req.headers["user-key"] = ENV["zomato-api-key"]
+        req.params = {
+          "entity_id": "#{city_id}",
+          "entity_type": "city",
+          "sort": "rating",
+          "order": "desc"
+        }
+      end
     end
 
     def parse_it(response)
