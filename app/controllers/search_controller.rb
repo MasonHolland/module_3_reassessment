@@ -4,7 +4,8 @@ class SearchController < ApplicationController
   end
 
   def index
-    @city_results = CityResults.new(search_params).make_calls
+    @city_results = CityResults.new(search_params)
+    binding.pry
   end
 
   private
