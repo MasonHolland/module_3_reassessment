@@ -8,8 +8,13 @@ class CityResults
     @cuisines = cuisines
   end
 
-  def restaurants
+  def retrieve_all
     zomser.search_for_city
+    restaurants
+    cuisines
+  end
+
+  def restaurants
     zomser.search_for_restaurants.map do |restaurant|
       { "name" => restaurant["restaurant"]["name"],
         "address" => restaurant["restaurant"]["location"]["address"],

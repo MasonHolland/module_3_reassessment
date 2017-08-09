@@ -4,9 +4,9 @@
   <%= @city_results.restaurants.each do |restaurant| %>
   <ul>
     <li class="restaurant">
-      <strong>Name: <%= restaurant.name %></strong><br>
-      <p>Address: <%= restaurant.address %></p><br>
-      <p>Locality: <%= restaurant.locality %></p>
+      <strong>Name: <%= restaurant["name"] %></strong><br>
+      <p>Address: <%= restaurant["address"] %></p><br>
+      <p>Locality: <%= restaurant["locality"] %></p>
     </li>
   </ul>
   <% end %>
