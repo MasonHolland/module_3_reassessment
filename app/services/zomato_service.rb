@@ -1,22 +1,31 @@
 class ZomatoService
   def initialize(params)
-    @city = params[:city]
-    @conn = Faraday.new(:url => 'https://developers.zomato.com/api/v2.1')
+    @city = params["city"]
+    @conn = Faraday.new(:url => 'https://developers.zomato.com')
   end
 
   def search_by_city
     city_id = city_lookup
   end
 
+  def search_for_cuisines
+  end
+
+  def search_for_restaurants
+  end
+
   private
     attr_reader :city, :conn
 
     def city_lookup
+      binding.pry
       response = conn.get do |req|
-        req.url '/cities'
-        req.headers['user-key'] = ENV['zomato-api-key']
-        req.body = "{ 'q': #{city} }"
+        req.url '/api/v2.1/cities'
+        req.headers["user-key"] = ENV["zomato-api-key"]
+        req.params = { "q": "#{city}" }
+        binding.pry
       end
+      binding.pry
       parsed = parse_it(response)
       parsed.first["id"]
     end
