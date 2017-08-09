@@ -21,6 +21,8 @@ describe ZomatoService do
   describe "#cuisines" do
     it "returns top 5 cuisines when provided with city_id" do
       VCR.use_cassette("services/cuisines_search") do
+        service.search_for_city
+        
         cuisines = service.search_for_cuisines
         cuisine = cuisines.first["cuisine"]
 
@@ -36,6 +38,7 @@ describe ZomatoService do
   describe "#restaurants" do
     it "returns top 5 restaurants when provided with city_id" do
       VCR.use_cassette("services/restaurants_search") do
+        service.search_for_city
 
         restaurants = service.search_for_restaurants
         restaurant = restaurants.first["restaurant"]
