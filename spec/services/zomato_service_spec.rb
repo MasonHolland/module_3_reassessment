@@ -22,13 +22,13 @@ describe ZomatoService do
     it "returns top 5 cuisines when provided with city_id" do
       VCR.use_cassette("services/cuisines_search") do
         cuisines = service.search_for_cuisines
-        cuisine = cuisines.first
+        cuisine = cuisines.first["cuisine"]
 
         expect(cuisines.count).to eq(5)
-        expect(cuisine[:name]).to eq("Afghani")
-        expect(cuisine[:id]).to eq(6)
-        expect(cuisines.last[:name]).to eq("Armenian")
-        expect(cuisines.last[:id]).to eq(175)
+        expect(cuisine["cuisine_name"]).to eq("Afghani")
+        expect(cuisine["cuisine_id"]).to eq(6)
+        expect(cuisines.last["cuisine"]["cuisine_name"]).to eq("Armenian")
+        expect(cuisines.last["cuisine"]["cuisine_id"]).to eq(175)
       end
     end
   end
